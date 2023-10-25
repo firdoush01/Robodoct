@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+</head>
+<body>
+  <h1>ROBODOCT</h1>
+
+<form id="my-form">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+
+  <label for="age">Age:</label>
+  <input type="number" id="age" name="age">
+
+  <label for="phone">Phone:</label>
+  <input type="digit" id="phone" name="phone">
+
+  <label for="gender">Gender:</label>
+  <input list="genders" name="gender">
+  <datalist id="genders">
+    <option value="Male">
+    <option value="Female">
+    <option value="Other">
+  </datalist>
+
+<input type="checkbox" id="form-submit" name="form-submit" value="Submit">
+<label for="form-submit">Submit</label>
+
+<div class="options-section">
+<input type="radio" id="Heart Rate" name="options" value="Heart Rate" class="bold-option">
+<label for="Heart Rate">Heart Rate</label><br>
+<input type="radio" id="Sugar Level" name="options" value="Sugar Level" class="bold-option">
+<label for="Sugar Level">Sugar Level</label><br>
+<input type="radio" id="O2 Level" name="options" value="O2 Level" class="bold-option">
+<label for="Sugar Level">O2 Level</label><br>
+<input type="radio" id="Pulse Rate" name="options" value="Pulse Rate" class="bold-option">
+<label for="Pulse Rate">Pulse Rate</label><br>
+<div id="myModal" class="modal">
+    <div class="modal-content">
+    <p id="modal-text"></p>
+    </div>
+    </div>
+
+<script>
+   document.getElementById('my-form').addEventListener('change', function(e) {
+if (e.target.name === 'options') {
+var instructions;
+switch (e.target.value) {
+case 'Heart Rate':
+instructions = 'To measure your heart rate please put your index finger on the sensor which is present on the chest of the robot.' ;
+break;
+case 'Sugar Level':
+instructions = 'To measure your sugar level please pick a pin and sting in your finger tip. Cautiously put a drop of blood on the glass strip and insert it inside the robot chest .';
+break;
+case 'O2 Level':
+instructions = 'To measure your O2 level  please wear the band on your wrist which is put on the hand of the robot';
+break;
+case 'Pulse Rate':
+instructions = 'To measure your pulse rate  please wear the band on your wrist which is put on the hand of the robot';
+break;
+}
+document.getElementById('modal-text').textContent = instructions;
+document.getElementById('myModal').style.display = "block";
+}
+});
+
+window.onclick = function(event) {
+if (event.target == document.getElementById('myModal')) {
+document.getElementById('myModal').style.display = "none";
+}
+}
+</script>
+<style>
+  body {
+  background-color: #ddf290;
+  width: 100%;
+  height: 100%;
+}
+h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 300;
+  font-size: xx-large;
+  color: rgb(246, 7, 182);
+  
+  
+}
+
+form {
+  border: 2px solid black;
+  border-radius: 30px;
+  padding: 20px;
+  /* padding-top: 30%; */
+  width: 300px;
+  margin: auto;
+  margin-top: 5%;
+  background-color: white;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  width: 90%;
+  height: 90%;
+}
+
+@keyframes example {
+  0% {
+    background-color: white;
+  }
+
+  25% {
+    background-color: #c7ea46;
+  }
+
+  50% {
+    background-color: #a9df9c;
+  }
+
+  75% {
+    background-color: #82e0aa;
+  }
+
+  100% {
+    background-color: #58d68d;
+  }
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type=text],
+input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+input[type=submit] {
+  background-color: black;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.bold-option {
+  transform: scale(2);
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: x-large;
+  font-style: normal;
+  font-family: sans-serif;
+  text-shadow: none;
+  background-color: white;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-shadow: none;
+  border: none
+}
+
+.bold-option:hover {
+  color: red;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: x-large;
+  font-style: normal;
+  font-family: sans-serif;
+  text-shadow: none;
+  background-color: white;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-shadow: none;
+  border: none
+}
+
+datalist {
+  display: none;
+}
+
+.options-section {
+  display: none;
+  margin-top: 20px
+}
+
+.options-section input[type="radio"] {
+  display: block
+}
+
+.options-section label {
+  display: block
+}
+
+.options-section input[type="submit"] {
+  margin-top: 20px
+}
+
+#form-submit:checked~.options-section {
+  display: block
+}
+
+#form-submit:checked~input[type="submit"] {
+  display: none
+}
+
+#form-submit:checked~label[for="form-submit"] {
+  display: none
+}
+
+#form-submit:checked~form {
+  height: auto !important
+}
+
+#form-submit:checked~form>* {
+  opacity: .5
+}
+
+#form-submit:checked~form>*>* {
+  pointer-events: none
+}
+
+#form-submit:checked~form>*>*>* {
+  pointer-events: auto
+}
+
+#form-submit:checked~form>*>*>*>* {
+  opacity: auto
+}
+
+/* New CSS for dialog box */
+
+/* The modal (background) */
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin-top: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10%;
+
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+
+/* The Close Button */
+/* .close { */
+</style>
+</body>
+</html>
